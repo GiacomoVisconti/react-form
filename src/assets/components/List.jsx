@@ -16,6 +16,11 @@ export default function List(){
         setNewArticle(e.target.value)
     }
     
+    function handleReset(){
+        setEditArticleIndex(null)
+        setNewArticle('');
+        setIsCreating(true)
+    }
     
     function handleUpdatedArticle(index, updatedArticle) {
         setIsCreating(false);
@@ -32,9 +37,7 @@ export default function List(){
             setArticle(article);
 
             // reset alla modalita di creazione isCreating 
-            setEditArticleIndex(null)
-            setNewArticle('');
-            setIsCreating(true)
+            handleReset()
         }
     }
 
@@ -67,7 +70,7 @@ export default function List(){
 
                 <button type="submit" className="btn"><i className="fa-regular fa-floppy-disk"></i> Salva</button>
                 {!isCreating && (
-                    <button type="button" className="btn" onClick={() => {}}><i className="fa-regular fa-times"></i> Annulla</button>
+                    <button type="button" className="btn" onClick={handleReset}><i className="fa-regular fa-times"></i> Annulla</button>
                 )}
             </form>
             {/* List of articles generates by a map into the datas array */}
