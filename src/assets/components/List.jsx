@@ -1,4 +1,5 @@
 import blogPosts from "../data/blog"
+import ButtonDelete from "./ButtonDelete"
 import { useState } from "react"
 
 export default function List(){
@@ -12,6 +13,8 @@ export default function List(){
         setNewArticle(e.target.value)
     }
 
+
+    
     function handleSubmit(e) {
         e.preventDefault()
         if(!newArticle.length == 0){
@@ -35,9 +38,8 @@ export default function List(){
                         return (
                             <li className="list-group-item d-flex justify-content-between" key={index}>
                                 {element} 
-                                <button className="btn">
-                                    <i className="fa fa-trash" aria-hidden="true"></i>
-                                </button>
+
+                                <ButtonDelete index={index} article={article} setArticle={setArticle}/>
                             </li>
 
                         )
